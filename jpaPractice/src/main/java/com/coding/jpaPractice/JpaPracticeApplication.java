@@ -1,4 +1,4 @@
-package com.coding.jpaPractice.jpaPractice;
+package com.coding.jpaPractice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
