@@ -1,4 +1,4 @@
-package com.coding.jpaPractice.jpaPractice.entities;
+package com.coding.jpaPractice.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

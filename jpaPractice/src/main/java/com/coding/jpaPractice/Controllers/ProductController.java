@@ -1,8 +1,10 @@
 package com.coding.jpaPractice.Controllers;
-
-import com.coding.jpaPractice.jpaPractice.repositories.ProductRepository;
+import com.coding.jpaPractice.entities.ProductEntity;
+import com.coding.jpaPractice.repositories.ProductRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -14,12 +16,20 @@ public class ProductController {
     private final ProductRepository productRepository;
 
     public ProductController(ProductRepository productRepository) {
+
         this.productRepository = productRepository;
     }
 
     @GetMapping
-    public List<com.coding.jpaPractice.entities.ProductEntity> getAllProducts() {
-        return productRepository.findAll();
+    public List<ProductEntity> getAllProducts(@RequestParam (defaultValue = "id") String sortBy) {
+       // return productRepository.findByOrderByPrice();
+
+       // return productRepository.findBy(Sort.by(Sort.Direction.DESC, sortBy, "price", "quantity"));
+
+        return productRepository.findBy(Sort.by(
+                Sort.Order.desc(sortBy)
+                ,Sort.Order.asc("title")
+        ));
     }
 
 }

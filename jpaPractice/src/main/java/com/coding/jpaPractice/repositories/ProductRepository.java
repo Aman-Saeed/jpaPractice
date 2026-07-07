@@ -1,6 +1,7 @@
-package com.coding.jpaPractice.jpaPractice.repositories;
+package com.coding.jpaPractice.repositories;
 
-import com.coding.jpaPractice.jpaPractice.entities.ProductEntity;
+import com.coding.jpaPractice.entities.ProductEntity;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -25,4 +26,8 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     List<ProductEntity> findByTitleContaining(String title);
 
     List<ProductEntity> findByTitleContainingIgnoreCase(String title);
+
+    List<ProductEntity> findByOrderByPrice();
+
+    List<ProductEntity> findBy(Sort sort);
 }
